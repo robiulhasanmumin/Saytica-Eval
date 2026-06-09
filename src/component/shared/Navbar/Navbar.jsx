@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 
 const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // মোবাইল মেনু ওপেন/ক্লোজ স্টেট
+  const [isOpen, setIsOpen] = useState(false);  
   const pathname = usePathname();  
 
   useEffect(() => {
@@ -32,12 +32,11 @@ const Navbar = () => {
       localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light'); // বাগ ফিক্সড (setItem রিমুভড)
+      localStorage.setItem('theme', 'light');  
     }
   };
 
-  // মোবাইল মেনু ক্লিকের পর অটোমেটিক ক্লোজ করার ফাংশন
-  const closeMenu = () => setIsOpen(false);
+   const closeMenu = () => setIsOpen(false);
 
   return (
     <nav className={`border-b sticky top-0 z-50 transition-colors duration-300 ${
@@ -48,8 +47,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-16 items-center">
           
-          {/* ১. লোগো এরিয়া */}
-          <Link href="/" onClick={closeMenu} className="flex items-center space-x-2 cursor-pointer shrink-0">
+           <Link href="/" onClick={closeMenu} className="flex items-center space-x-2 cursor-pointer shrink-0">
             <div className="p-2 bg-indigo-600 rounded-xl text-white">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
@@ -60,8 +58,7 @@ const Navbar = () => {
             </span>
           </Link>
           
-          {/* ২. ডেস্কটপ নেভিগেশন লিংক (বড় স্ক্রিনের জন্য - hidden md:flex) */}
-          <div className="hidden md:flex items-center space-x-6">
+           <div className="hidden md:flex items-center space-x-6">
             <Link 
               href="/leaderboard" 
               className={`text-sm font-semibold transition-colors cursor-pointer ${
@@ -80,7 +77,7 @@ const Navbar = () => {
               Task Board
             </Link>
             
-            {/* থিম টগল বাটন (डেস্কটপ) */}
+            
             <button
               onClick={handleThemeToggle}
               className={`p-2 rounded-xl border transition-all cursor-pointer ${
@@ -99,10 +96,8 @@ const Navbar = () => {
             </button>
           </div>
 
-          {/* ৩. মোবাইল রাইট কন্ট্রোলস (থিম বাটন + হ্যামবার্গার বার - md:hidden) */}
-          <div className="flex items-center space-x-3 md:hidden">
-            {/* থিম টগল বাটন (মোবাইল) */}
-            <button
+           <div className="flex items-center space-x-3 md:hidden">
+             <button
               onClick={handleThemeToggle}
               className={`p-2 rounded-xl border transition-all cursor-pointer ${
                 darkMode ? 'bg-slate-800 border-slate-700 text-yellow-400' : 'bg-slate-100 border-slate-200 text-slate-600'
@@ -119,7 +114,7 @@ const Navbar = () => {
               )}
             </button>
 
-            {/* হ্যামবার্গার বার বাটন */}
+            {/* hamburger button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`p-2 rounded-xl border transition-all cursor-pointer ${
@@ -128,13 +123,11 @@ const Navbar = () => {
               aria-label="Toggle Menu"
             >
               {isOpen ? (
-                // ক্রস (X) আইকন - যখন মেনু খোলা
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
               ) : (
-                // ৩-লাইন হ্যামবার্গার আইকন - যখন মেনু বন্ধ
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
               )}
@@ -144,7 +137,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* 📱 ৪. মোবাইল রেসপন্সিভ ড্রপডাউন মেনু প্যানেল */}
+      {/* mobile menu */}
       <div className={`md:hidden overflow-hidden transition-all duration-300 ease-in-out ${
         isOpen ? 'max-h-48 opacity-100 border-t border-slate-200/50 dark:border-slate-800/50' : 'max-h-0 opacity-0 pointer-events-none'
       } ${darkMode ? 'bg-slate-950' : 'bg-white'}`}>
