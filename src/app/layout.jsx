@@ -1,5 +1,6 @@
 import './globals.css';
-import Navbar from '../component/Navbar/Navbar';
+import Navbar from '../component/shared/Navbar/Navbar';
+import Footer from '../component/shared/Footer/Footer';
 
 export const metadata = {
   title: 'Saytica Eval Console',
@@ -16,6 +17,7 @@ export default function RootLayout({ children }) {
          <div className="flex-1">
           {children}
         </div>
+        <Footer />
       </body>
     </html>
   );

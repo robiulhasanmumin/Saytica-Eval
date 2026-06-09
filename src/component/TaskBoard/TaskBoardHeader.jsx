@@ -22,7 +22,7 @@ export default function TaskBoardHeader({ viewMode, setViewMode }) {
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
-          👤 <span className='ml-2'>Annotator</span>
+          👤 <span className='ml-1'>Annotator</span>
         </button>
         <button
           onClick={() => setViewMode('client')}
@@ -32,7 +32,7 @@ export default function TaskBoardHeader({ viewMode, setViewMode }) {
               : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
           }`}
         >
-          👁️ <span className='ml-2'>Client</span>
+          👁️ <span className='ml-1'>Client</span>
         </button>
       </div>
     </div>
