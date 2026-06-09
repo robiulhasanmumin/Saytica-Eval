@@ -1,7 +1,7 @@
 import './globals.css';
 import Navbar from '../component/shared/Navbar/Navbar';
-import Footer from '../component/shared/Footer/Footer';
-
+import Footer from '@/component/shared/Foooter/Footer';
+ 
 export const metadata = {
   title: 'Saytica Eval Console',
   description: 'AI model evaluation and annotation workspace',
