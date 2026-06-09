@@ -7,13 +7,34 @@ const Navbar = () => {
   const [darkMode, setDarkMode] = useState(false);
   const pathname = usePathname();  
 
-  useEffect(() => {
-    if (darkMode) {
+   useEffect(() => {
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
       document.documentElement.classList.add('dark');
+    } else if (savedTheme === 'light') {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    } else {
+       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setDarkMode(prefersDark);
+      if (prefersDark) document.documentElement.classList.add('dark');
+    }
+  }, []);
+
+   const handleThemeToggle = () => {
+    const nextMode = !darkMode;
+    setDarkMode(nextMode);
+    
+    if (nextMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
     } else {
       document.documentElement.classList.remove('dark');
+      localStorage.setItem('setItem', 'light');  
+      localStorage.setItem('theme', 'light');
     }
-  }, [darkMode]);
+  };
 
   return (
     <nav className={`border-b sticky top-0 z-50 transition-colors duration-300 ${
@@ -58,7 +79,7 @@ const Navbar = () => {
             
             {/* Theme Toggle */}
             <button
-              onClick={() => setDarkMode(!darkMode)}
+              onClick={handleThemeToggle}
               className={`p-2 rounded-xl border transition-all cursor-pointer ${
                 darkMode ? 'bg-slate-800 border-slate-700 text-yellow-400' : 'bg-slate-100 border-slate-200 text-slate-600'
               }`}

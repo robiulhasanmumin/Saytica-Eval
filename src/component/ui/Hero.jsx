@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 
 export default function Hero() {
   return (
@@ -26,12 +27,17 @@ export default function Hero() {
         </p>
         
          <div className="flex flex-wrap gap-4 pt-4">
+          <Link href="/leaderboard" >  
           <button className="px-6 py-3.5 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-xl shadow-lg shadow-indigo-600/20 dark:shadow-indigo-900/30 transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer">
             📊 View Leaderboard
           </button>
-          <button className="px-6 py-3.5 border font-semibold rounded-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer bg-white dark:bg-slate-800 text-slate-700 dark:text-gray-200 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700/80">
+          </Link>
+
+          <Link href="/tasks" > 
+          <button to="/tasks" className="px-6 py-3.5 border font-semibold rounded-xl transition-all transform hover:-translate-y-0.5 active:translate-y-0 cursor-pointer bg-white dark:bg-slate-800 text-slate-700 dark:text-gray-200 border-gray-200 dark:border-slate-700 hover:bg-gray-50 dark:hover:bg-slate-700/80">
             📋 View Task Board
           </button>
+          </Link>
         </div>
       </div>
 
